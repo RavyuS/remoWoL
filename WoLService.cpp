@@ -23,6 +23,7 @@ bool WoLService::SearchTargetMAC(){
   }  
   
   ENC28J60::BarePacket bp = eth.GetNextPacket();
+  delete [] bp.payload; // payload not required.
   byte target_mac [6];
   Serial.println("Packet received. Extracting MAC address from Target:");
   for(unsigned i = 0; i<6; i++){
